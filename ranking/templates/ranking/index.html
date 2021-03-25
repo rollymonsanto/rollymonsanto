@@ -1,0 +1,73 @@
+{% extends "ranking/base.html" %}
+
+	{% block content %}
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column2">Rank</th>
+								<th class="column1">Player Name</th>
+								<th class="column1">Chalk Hit</th>
+								<th class="column2">Score</th>
+								<th class="column2">Target Hit</th> 
+								<th class="column1">Date Played</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							{% for rank in ranks.all %}
+							<tr>
+								<!-- <td class="column2">{{ forloop.counter }}</td> -->
+								<td class="column2">{{ rank.rank }}</td>
+								<td class="column1">{{ rank.player.player_name }}</td>
+								<td class="column1">{{ rank.chalk_hit }}</td>
+								<td class="column2">{{ rank.score }}</td>
+								<td class="column3">{{ rank.target_hit }}</td> 
+								<td class="column1">{{ rank.date_played|date:'Y-m-d H:i' }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="container pt-3 my-3 text-white">
+				<h3>Recent Whip Crack Result</h3>
+			</div>
+
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column2">Rank</th>
+								<th class="column1">Player Name</th>
+								<th class="column1">Chalk Hit</th>
+								<th class="column2">Score</th>
+								<th class="column2">Target Hit</th> 
+								<th class="column1">Date Played</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							{% for lastscore in lastscores.all %}
+							<tr>
+								<td class="column2">{{ lastscore.rank }}</td>
+								<td class="column1">{{ lastscore.player.player_name }}</td>
+								<td class="column1">{{ lastscore.chalk_hit }}</td>
+								<!-- <td class="column1">{{ lastscore.face_hit }}</td> -->
+								<td class="column2">{{ lastscore.score }}</td>
+								<td class="column3">{{ lastscore.target_hit }}</td> 
+								<td class="column1">{{ lastscore.date_played|date:'Y-m-d H:i' }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
